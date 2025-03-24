@@ -6,11 +6,7 @@ module.exports = {
     .setName('help')
     .setDescription('Menú de ayuda dinámico con categorías.'),
   async execute(interaction) {
-    const closeButton = new ButtonBuilder()
-      .setCustomId('confirm')
-      .setLabel('𝗫')
-      .setStyle(ButtonStyle.Danger);
-
+    const cancel = new ButtonBuilder().setCustomId('cancel').setLabel('𝗫').setStyle(ButtonStyle.Danger);
     const selectMenu = new StringSelectMenuBuilder()
       .setCustomId('starter')
       .setPlaceholder('Categorias')
@@ -38,7 +34,7 @@ module.exports = {
       );
 
     const selectRow = new ActionRowBuilder().addComponents(selectMenu);
-    const buttonRow = new ActionRowBuilder().addComponents(closeButton);
+    const buttonRow = new ActionRowBuilder().addComponents(cancel);
 
     const reply = await interaction.reply({
       content: 'Categories list',
@@ -61,7 +57,7 @@ module.exports = {
           moderation: embed3,
         };
         await i.update({ embeds: [embeds[selectedOption]] });
-      } else if (i.customId === 'confirm') {
+      } else if (i.customId === 'cancel') {
         await reply.delete();
       }
     });

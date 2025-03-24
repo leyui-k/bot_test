@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { SlashCommandBuilder } = require('discord.js');
 const mysql = require('mysql2/promise');
 
