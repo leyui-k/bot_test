@@ -10,7 +10,7 @@ const cors = require('cors');
 const app = express();
 
 app.use(bodyParser.json());
-app.use(cors({ origin: 'http://127.0.0.1:5501' }));
+app.use(cors({ origin: 'https://cacolombia.com' }));
 
 const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
 
